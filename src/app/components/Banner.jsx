@@ -18,6 +18,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { RightArrow } from "./icons/RightArrow";
 import { LeftArrow } from "./icons/LeftArrow";
+import Navbar from "../layouts/Navbar";
 
 const BannerSlider = () => {
   const swiperRef = useRef(null);
@@ -94,6 +95,7 @@ const BannerSlider = () => {
 
   return (
     <section className="relative h-screen">
+      <Navbar />
       <Swiper
         ref={swiperRef}
         spaceBetween={0}
@@ -131,7 +133,7 @@ const BannerSlider = () => {
               >
                 <Image
                   fill
-                  src={slide.image}
+                  src={slide.image.src}
                   alt={slide.title}
                   className="object-cover"
                   priority={index === 0}
