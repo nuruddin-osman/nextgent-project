@@ -1,103 +1,95 @@
-// components/Navbar.jsx
 "use client";
 
+import Link from "next/link";
 import { useState, useEffect } from "react";
+import { Logo } from "../components/icons/Logo";
+import { IoCall } from "react-icons/io5";
+import MenuBar from "../components/icons/MenuBar";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
 
   useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
+    let lastY = 0;
 
-      // Scroll down - hide navbar
-      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+    const handleScroll = () => {
+      const currentY = window.scrollY;
+      if (currentY > lastY && currentY > 200) {
         setIsVisible(false);
-      }
-      // Scroll up - show navbar
-      else if (currentScrollY < lastScrollY) {
+      } else if (currentY < lastY || currentY < 100) {
         setIsVisible(true);
       }
 
-      // Background color change
-      if (currentScrollY > 50) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
+      setIsScrolled(currentY > 50);
 
-      setLastScrollY(currentScrollY);
+      lastY = currentY;
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
 
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, [lastScrollY]);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <nav
-      className={`
-      fixed top-0 left-0 w-full z-50 
-      transition-all duration-500 ease-in-out
+      className={`fixed top-0 left-0 w-full z-50 py-5
+      transition-all duration-1000 ease-in-out
       ${isVisible ? "translate-y-0" : "-translate-y-full"}
       ${
-        isScrolled ? "bg-white/95 backdrop-blur-md shadow-lg" : "bg-transparent"
+        isScrolled ? "bg-black/50 backdrop-blur-md shadow-lg" : "bg-transparent"
       }
     `}
     >
       <div className="container mx-auto py-4">
         <div className="flex items-center justify-between">
-          {/* Logo */}
-          <div className="flex items-center">
-            <span
-              className={`
-              text-2xl font-bold transition-colors duration-300
-              ${isScrolled ? "text-gray-900" : "text-white"}
-            `}
-            >
-              YourLogo
-            </span>
+          <div className="text-2xl font-bold text-white">
+            <Link href="/">
+              <Logo />
+            </Link>
           </div>
 
-          {/* Navigation Links */}
-          <div className="hidden md:flex items-center space-x-8">
-            {["Home", "About", "Services", "Portfolio", "Contact"].map(
-              (item) => (
-                <a
-                  key={item}
-                  href={`#${item.toLowerCase()}`}
-                  className={`
-                  font-medium transition-all duration-300 hover:text-blue-600
-                  ${
-                    isScrolled
-                      ? "text-gray-700 hover:text-blue-600"
-                      : "text-white hover:text-blue-200"
-                  }
-                `}
+          <div className="uppercase text-white font-montserrat font-semibold text-base flex items-center gap-36">
+            <div className="flex items-center gap-10">
+              <div className="flex items-center gap-3">
+                <Link
+                  className="hover:text-white/40 transition-all duration-500"
+                  href="#"
                 >
-                  {item}
-                </a>
-              )
-            )}
+                  Residential
+                </Link>
+                <span className="h-7 w-[2px] bg-white"></span>
+                <Link
+                  className="hover:text-white/40 transition-all duration-500"
+                  href="#"
+                >
+                  Commercial
+                </Link>
+              </div>
+              <div className="flex items-center gap-3">
+                <span className="">
+                  <IoCall />
+                </span>
+                <Link
+                  className="hover:text-white/40 transition-all duration-500"
+                  href="#"
+                >
+                  16777
+                </Link>
+              </div>
+            </div>
+            <div className="flex items-center gap-8">
+              <Link
+                className="hover:text-white/40 transition-all duration-500"
+                href="#"
+              >
+                menu
+              </Link>
+              <button className="">
+                <MenuBar />
+              </button>
+            </div>
           </div>
-
-          {/* CTA Button */}
-          <button
-            className={`
-            px-6 py-2 rounded-full font-medium transition-all duration-300
-            ${
-              isScrolled
-                ? "bg-blue-600 text-white hover:bg-blue-700"
-                : "bg-white/20 text-white backdrop-blur-sm hover:bg-white/30"
-            }
-          `}
-          >
-            Get Started
-          </button>
         </div>
       </div>
     </nav>
