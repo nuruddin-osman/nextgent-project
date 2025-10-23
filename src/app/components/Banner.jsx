@@ -138,14 +138,14 @@ const BannerSlider = () => {
                     priority={index === 0}
                   />
 
-                  <div className="absolute bottom-10 left-24 z-10">
-                    <h4 className="text-lg font-medium uppercase text-white font-montserrat">
+                  <div className="absolute bottom-10 left-10 md:left-24 z-10">
+                    <h4 className="text-sm lg:text-lg font-medium uppercase text-white font-montserrat">
                       {slide.subtitle}
                     </h4>
-                    <h2 className="text-8xl font-light uppercase text-white font-montserrat leading-[100px] my-5">
+                    <h2 className="text-4xl md:text-6xl lg:text-8xl font-light uppercase text-white font-montserrat md:leading-[100px] my-3 md:my-5">
                       {slide.title}
                     </h2>
-                    <h5 className="text-lg font-medium uppercase text-white font-montserrat">
+                    <h5 className="text-sm lg:text-lg font-medium uppercase text-white font-montserrat">
                       {slide.desc}
                     </h5>
                   </div>
@@ -156,7 +156,7 @@ const BannerSlider = () => {
 
           {/* Custom Navigation Buttons */}
           <div
-            className={`custom-prev absolute bottom-[8%] right-[12%] -translate-y-1/2 
+            className={`custom-prev absolute bottom-[2%] md:bottom-[8%] right-[20%] md:right-[12%] -translate-y-1/2 
            flex items-center justify-center w-12 h-12 
            rounded-full cursor-pointer z-50
             transition-all duration-300 group`}
@@ -164,7 +164,7 @@ const BannerSlider = () => {
             <LeftArrow />
           </div>
           <div
-            className={`custom-next absolute bottom-[8%] right-[6%] -translate-y-1/2 
+            className={`custom-next absolute bottom-[2%] md:bottom-[8%] right-[6%] -translate-y-1/2 
             flex items-center justify-center w-12 h-12 
             rounded-full cursor-pointer z-50
              transition-all duration-300 group`}

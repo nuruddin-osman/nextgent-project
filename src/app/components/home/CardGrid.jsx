@@ -74,7 +74,7 @@ const CardGrid = () => {
 
           {/* Custom Navigation Buttons */}
           <div
-            className={`custom-next absolute -bottom-24 left-[6%] -translate-y-1/2 
+            className={`custom-next absolute -bottom-16 md:-bottom-24 left-[16%] md:left-[6%] -translate-y-1/2 
             flex items-center justify-center w-12 h-12 
             rounded-full cursor-pointer z-80
              transition-all duration-300 group`}
@@ -82,7 +82,7 @@ const CardGrid = () => {
             <RightArrow />
           </div>
           <div
-            className={`custom-prev absolute -bottom-24 left-0 -translate-y-1/2 
+            className={`custom-prev absolute -bottom-16 md:-bottom-24 left-0 -translate-y-1/2 
            flex items-center justify-center w-12 h-12 
            rounded-full cursor-pointer z-80
             transition-all duration-300 group`}
