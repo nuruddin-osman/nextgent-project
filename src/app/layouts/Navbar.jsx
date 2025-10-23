@@ -8,11 +8,13 @@ import MenuBar from "../components/icons/MenuBar";
 import NavMenu from "./NavMenu";
 import Aos from "aos";
 import "aos/dist/aos.css";
+import PageTransition from "../utils/PageTransition";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const [isOpen, setIsOpen] = useState(false);
+  const [triggerTransition, setTriggerTransition] = useState(false);
 
   useEffect(() => {
     let lastY = 0;
@@ -42,6 +44,13 @@ const Navbar = () => {
   const handleOpen = () => setIsOpen(true);
   const handleClose = () => setIsOpen(false);
 
+  const handleLogoClick = () => {
+    setTriggerTransition(true);
+    setTimeout(() => {
+      window.location.href = "/";
+    }, 1000);
+  };
+
   return (
     <>
       <nav
@@ -56,9 +65,10 @@ const Navbar = () => {
         <div className="container mx-auto md:py-4 px-3">
           <div className="flex items-center justify-between">
             <div className="text-2xl font-bold text-white">
-              <Link href="/">
+              <Link href="/" onClick={handleLogoClick}>
                 <Logo />
               </Link>
+              {triggerTransition && <PageTransition />}
             </div>
 
             <div className="uppercase text-white font-montserrat font-semibold text-base flex items-center md:gap-10 lg:gap-36">

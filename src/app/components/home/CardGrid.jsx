@@ -11,12 +11,15 @@ import { LeftArrow } from "../icons/LeftArrow";
 import { RightArrow } from "../icons/RightArrow";
 import { useEffect, useState } from "react";
 import { cardData } from "../dummy-content/Datas";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const CardGrid = () => {
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
     setIsMounted(true);
+    AOS.init({ duration: 1000, once: true });
   }, []);
 
   if (!isMounted) {
@@ -28,7 +31,7 @@ const CardGrid = () => {
   }
 
   return (
-    <section className="py-20">
+    <section data-aos="fade-up" className="py-20">
       <div className="container mx-auto px-4">
         <section className="relative pb-10">
           <Swiper

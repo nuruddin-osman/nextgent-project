@@ -86,9 +86,7 @@ const BannerSlider = () => {
 
   if (!isMounted) {
     return (
-      <div className="h-screen bg-gray-200 animate-pulse flex items-center justify-center">
-        <div className="text-xl">Loading...</div>
-      </div>
+      <div className="h-screen bg-black flex items-center justify-center"></div>
     );
   }
 
