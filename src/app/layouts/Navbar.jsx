@@ -53,7 +53,7 @@ const Navbar = () => {
       }
     `}
       >
-        <div className="container mx-auto py-4">
+        <div className="container mx-auto md:py-4 px-3">
           <div className="flex items-center justify-between">
             <div className="text-2xl font-bold text-white">
               <Link href="/">
@@ -61,8 +61,8 @@ const Navbar = () => {
               </Link>
             </div>
 
-            <div className="uppercase text-white font-montserrat font-semibold text-base flex items-center gap-36">
-              <div className="flex items-center gap-10">
+            <div className="uppercase text-white font-montserrat font-semibold text-base flex items-center md:gap-10 lg:gap-36">
+              <div className="hidden md:flex items-center gap-7 lg:gap-10">
                 <div className="flex items-center gap-3">
                   <Link
                     className="hover:text-white/40 transition-all duration-500"
@@ -106,7 +106,7 @@ const Navbar = () => {
         </div>
       </nav>
 
-      <div className="relative top-0 left-0 z-50">
+      <div className="fixed top-0 left-0 z-50">
         {isOpen && <NavMenu handleClose={handleClose} />}
       </div>
       {/* Animated NavMenu Overlay */}

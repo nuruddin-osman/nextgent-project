@@ -32,11 +32,11 @@ const NavMenu = ({ handleClose }) => {
 
   return (
     <section data-aos="fade-up">
-      <div className="flex">
-        <div className="w-2/5">
+      <div className="flex justify-end">
+        <div className="w-2/5 hidden md:block">
           <ImageGallary />
         </div>
-        <div className="bg-[#2D2D2D] w-3/5 py-10 px-24 h-screen overflow-y-scroll scrollbar-thin scrollbar-thumb-[#F4991A] scrollbar-track-gray-200">
+        <div className="bg-[#2D2D2D] w-4/5 md:w-3/5 py-6 md:py-10 px-10 md:px-16 lg:px-24 h-screen overflow-y-scroll scrollbar-thin scrollbar-thumb-[#F4991A] scrollbar-track-gray-200">
           <div className="flex justify-end">
             <button
               onClick={handleClose}
@@ -45,12 +45,12 @@ const NavMenu = ({ handleClose }) => {
               <IoCloseOutline />
             </button>
           </div>
-          <div className="flex w-full">
-            <ul className="w-1/2 flex flex-col gap-5">
+          <div className="flex w-full flex-col lg:flex-row gap-16">
+            <ul className="w-full lg:w-1/2 flex flex-col gap-5 order-2 lg:order-1">
               {menuItems.blog_menu.map((item) => (
                 <Link
                   key={item}
-                  className="relative uppercase text-[#f7f3f0] font-montserrat font-normal text-2xl
+                  className="relative uppercase text-[#f7f3f0] font-montserrat font-normal text-base md:text-2xl
                             w-fit transition-all duration-500 ease-in-out
                             after:content-[''] after:absolute after:left-0 after:bottom-0 
                             after:h-[2px] after:w-0 after:bg-[#f7f3f0] after:transition-all after:duration-500 after:ease-in-out
@@ -61,11 +61,11 @@ const NavMenu = ({ handleClose }) => {
                 </Link>
               ))}
             </ul>
-            <ul className="w-1/2 flex flex-col gap-5">
+            <ul className="w-full lg:w-1/2 flex flex-col gap-5 order-1 lg:order-2">
               {menuItems.action_menu.map((item) => (
                 <Link
                   key={item}
-                  className="relative uppercase text-[#f7f3f0] font-montserrat font-normal text-2xl
+                  className="relative uppercase text-[#f7f3f0] font-montserrat font-normal text-base md:text-2xl
                             w-fit transition-all duration-500 ease-in-out
                             after:content-[''] after:absolute after:left-0 after:bottom-0 
                             after:h-[2px] after:w-0 after:bg-[#f7f3f0] after:transition-all after:duration-500 after:ease-in-out
