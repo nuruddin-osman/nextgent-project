@@ -1,9 +1,13 @@
+"use client";
+
 import Link from "next/link";
-import React from "react";
+import React, { useEffect } from "react";
 import { IoCloseOutline } from "react-icons/io5";
 import ImageGallary from "./ImageGallary";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
-const NavMenu = () => {
+const NavMenu = ({ handleClose }) => {
   const menuItems = {
     action_menu: [
       "Home",
@@ -21,17 +25,25 @@ const NavMenu = () => {
     ],
     blog_menu: ["Residential", "Commercial"],
   };
+
+  useEffect(() => {
+    AOS.init({ duration: 1000, once: true });
+  }, []);
+
   return (
-    <section>
+    <section data-aos="fade-up">
       <div className="flex">
         <div className="w-2/5">
           <ImageGallary />
         </div>
-        <div className="bg-[#2D2D2D] w-3/5 py-10 px-24 h-screen overflow-y-auto">
+        <div className="bg-[#2D2D2D] w-3/5 py-10 px-24 h-screen overflow-y-scroll scrollbar-thin scrollbar-thumb-[#F4991A] scrollbar-track-gray-200">
           <div className="flex justify-end">
-            <div className="h-16 w-16 rounded-full border-2 border-white/70 text-white flex items-center justify-center text-xl cursor-pointer">
+            <button
+              onClick={handleClose}
+              className="h-16 w-16 rounded-full border-2 border-white/70 text-white flex items-center justify-center text-xl cursor-pointer"
+            >
               <IoCloseOutline />
-            </div>
+            </button>
           </div>
           <div className="flex w-full">
             <ul className="w-1/2 flex flex-col gap-5">

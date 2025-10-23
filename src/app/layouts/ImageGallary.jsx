@@ -1,27 +1,17 @@
 "use client";
-import React, { useEffect } from "react";
+import React from "react";
 import ImageGallery from "react-image-gallery";
-import AOS from "aos";
-import "aos/dist/aos.css";
+
 import "react-image-gallery/styles/css/image-gallery.css";
 import { cardData } from "../components/dummy-content/Datas";
 
 const ImageGallary = () => {
-  useEffect(() => {
-    AOS.init({ duration: 1000, once: true });
-  }, []);
-
   const images = cardData.map((item) => ({
     original: item.image.src,
   }));
 
-  console.log(images);
-
   return (
-    <div
-      className="relative w-full h-screen overflow-hidden group"
-      data-aos="fade-up"
-    >
+    <div className="relative w-full h-screen overflow-hidden group">
       {/* Image Gallery */}
       <ImageGallery
         items={images}
