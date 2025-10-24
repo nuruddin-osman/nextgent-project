@@ -154,7 +154,7 @@ const BannerSlider = () => {
 
           {/* Custom Navigation Buttons */}
           <div
-            className={`custom-prev absolute bottom-[2%] md:bottom-[8%] right-[20%] md:right-[12%] -translate-y-1/2 
+            className={`custom-prev absolute bottom-[2%] md:bottom-[8%] right-[20%] md:right-[12%] -translate-y-1/2 text-[#f2f0f0]
            flex items-center justify-center w-12 h-12 
            rounded-full cursor-pointer z-50
             transition-all duration-300 group`}
@@ -163,7 +163,7 @@ const BannerSlider = () => {
           </div>
           <div
             className={`custom-next absolute bottom-[2%] md:bottom-[8%] right-[6%] -translate-y-1/2 
-            flex items-center justify-center w-12 h-12 
+            flex items-center justify-center w-12 h-12 text-[#f2f0f0]
             rounded-full cursor-pointer z-50
              transition-all duration-300 group`}
           >

@@ -19,7 +19,7 @@ export const RightArrow = () => {
         y1={10.5}
         x2={40}
         y2={10.5}
-        stroke="#f2f0f0"
+        stroke="currentColor"
         strokeWidth="1.2"
         strokeLinecap="round"
         className={`transition-transform duration-500 ease-in-out origin-right ${
@@ -34,7 +34,7 @@ export const RightArrow = () => {
         y1={5}
         x2={40}
         y2={10.5}
-        stroke="#f2f0f0"
+        stroke="currentColor"
         strokeWidth="1.2"
         strokeLinecap="round"
       />
@@ -43,7 +43,7 @@ export const RightArrow = () => {
         y1={16}
         x2={40}
         y2={10.5}
-        stroke="#f2f0f0"
+        stroke="currentColor"
         strokeWidth="1.2"
         strokeLinecap="round"
       />
