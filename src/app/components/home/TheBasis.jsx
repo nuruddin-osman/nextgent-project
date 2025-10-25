@@ -58,7 +58,7 @@ const TheBasis = () => {
           <SubHeading content="THE BASIS OF OUR BELIEFS" />
           <div className="w-16 h-1 bg-red-700"></div>
         </div>
-        <div className="w-full relative  flex items-center flex-col md:justify-end mt-20">
+        <div className="w-full relative  flex items-center flex-col md:flex-row md:justify-end mt-20">
           <div
             className=" w-full md:w-3/5 bg-secondary px-6 md:px-16 lg:px-24 py-6 lg:py-12 md:absolute z-10 md:top-2/5 md:left-0  order-2 md:order-1"
             data-aos="fade-down"

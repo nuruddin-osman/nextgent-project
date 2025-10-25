@@ -35,7 +35,7 @@ const OurAscendance = () => {
           <div className="w-full lg:w-1/2">
             <div className="order-2 md:order-1">
               <article
-                className="text-sm font-normal text-secondary font-montserrat leading-6 mb-6"
+                className="text-sm font-normal !text-secondary font-montserrat leading-6 mb-6"
                 data-aos="fade-right"
                 data-aos-delay="200"
               >
@@ -45,7 +45,7 @@ const OurAscendance = () => {
                 Bangladesh with Japanese collaboration and experience.
               </article>
               <article
-                className="text-sm font-normal text-secondary font-montserrat leading-6"
+                className="text-sm font-normal !text-secondary font-montserrat leading-6"
                 data-aos="fade-right"
                 data-aos-delay="300"
               >
