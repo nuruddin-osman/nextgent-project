@@ -18,8 +18,6 @@ const OurAscendance = () => {
     });
   }, []);
 
-  console.log(project_slide_1);
-
   return (
     <section>
       <div className="container mx-auto py-32 px-3">
@@ -28,7 +26,7 @@ const OurAscendance = () => {
           data-aos="fade-up"
           data-aos-delay="100"
         >
-          <SubHeading content="OUR ASCENDANCE" className="text-secondary" />
+          <SubHeading content="OUR ASCENDANCE" className="!text-secondary" />
           <div className="w-16 h-1 bg-primary"></div>
         </div>
 
