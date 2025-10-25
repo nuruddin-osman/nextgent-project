@@ -58,19 +58,19 @@ const TheBasis = () => {
           <SubHeading content="THE BASIS OF OUR BELIEFS" />
           <div className="w-16 h-1 bg-red-700"></div>
         </div>
-        <div className="w-full relative  flex items-center justify-end mt-20">
+        <div className="w-full relative  flex items-center flex-col md:justify-end mt-20">
           <div
-            className="w-3/5 bg-secondary px-24 py-12 absolute z-10 top-2/5  left-0"
+            className=" w-full md:w-3/5 bg-secondary px-6 md:px-16 lg:px-24 py-6 lg:py-12 md:absolute z-10 md:top-2/5 md:left-0  order-2 md:order-1"
             data-aos="fade-down"
             data-aos-delay="200"
           >
             {/* Values Navigation */}
-            <div className="flex mb-5">
+            <div className="flex flex-col md:flex-row mb-8 md:mb-5">
               {renderItems.map((value) => (
                 <button
                   key={value.id}
                   onClick={() => setActiveValue(value.id)}
-                  className={`relative px-5 py-3  group  ${
+                  className={`relative px-5 py-3  group text-left ${
                     activeValue === value.id ? "text-white" : "text-white/60"
                   }`}
                 >
@@ -100,7 +100,7 @@ const TheBasis = () => {
               {activeItem?.description}
             </div>
           </div>
-          <div className="w-1/2">
+          <div className="w-full md:w-1/2 order-1 md:order-2">
             <div
               className="relative h-[60vh]"
               data-aos="fade-up"

@@ -15,7 +15,7 @@ const SubHeading = ({ className, content }) => {
     <>
       <h2
         data-aos="fade-up"
-        className={`text-4xl font-light uppercase text-white font-montserrat leading-8 ${className}`}
+        className={`text-xl md:text-4xl font-light uppercase text-white font-montserrat leading-8 ${className}`}
       >
         {content}
       </h2>
