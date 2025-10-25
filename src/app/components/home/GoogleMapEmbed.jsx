@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { FaLocationDot } from "react-icons/fa6";
 import { IoMdClose } from "react-icons/io";
 
-const Dummy = () => {
+const GoogleMapEmbed = () => {
   const [overlay, setOverlay] = useState(true);
   const [showModal, setShowModal] = useState(false);
 
@@ -105,4 +105,4 @@ const Dummy = () => {
   );
 };
 
-export default Dummy;
+export default GoogleMapEmbed;
