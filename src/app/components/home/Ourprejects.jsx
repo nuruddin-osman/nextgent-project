@@ -16,7 +16,7 @@ const Ourprejects = () => {
     <section className="bg-black py-32">
       <div className="container mx-auto">
         <div className="flex flex-col items-center justify-center gap-3">
-          <div className="w-72 h-[1px] bg-red-700/40 mb-6"></div>
+          <div className="w-52 lg:w-72 h-[1px] bg-red-700/40 mb-6"></div>
           <SubHeading content="our projects" className="" />
           <div className="w-16 h-1 bg-red-700"></div>
         </div>
