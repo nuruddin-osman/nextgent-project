@@ -6,6 +6,7 @@ import TheBasis from "./components/home/TheBasis";
 import Heven from "./components/home/Heven";
 import GoogleMapEmbed from "./components/home/GoogleMapEmbed";
 import Dummy from "./components/Dummy";
+import Testimonials from "./components/home/Testimonials";
 const Home = () => {
   return (
     <div>
@@ -15,6 +16,7 @@ const Home = () => {
       <TheBasis />
       <Heven />
       <GoogleMapEmbed />
+      <Testimonials />
       {/* <Dummy /> */}
     </div>
   );

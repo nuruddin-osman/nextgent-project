@@ -6,15 +6,16 @@ import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-import AnimatedCard from "../AnimatedCard";
 import { LeftArrow } from "../icons/LeftArrow";
 import { RightArrow } from "../icons/RightArrow";
 import { useEffect, useState } from "react";
-import { cardData } from "../dummy-content/Datas";
+import { basisData } from "../dummy-content/Datas";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import SubHeading from "@/app/utils/SubHeading";
+import TestimonialsCard from "../TestimonialsCard";
 
-const CardGrid = () => {
+const Testimonials = () => {
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
@@ -31,9 +32,17 @@ const CardGrid = () => {
   }
 
   return (
-    <section data-aos="fade-up" className="py-20">
-      <div className="container mx-auto px-4">
-        <section className="relative pb-10">
+    <section data-aos="fade-up" className="py-20 lg:py-32 bg-black">
+      <div className="container mx-auto px-3">
+        <div
+          className="flex flex-col items-center justify-center gap-3"
+          data-aos="fade-up"
+          data-aos-delay="100"
+        >
+          <SubHeading content="testimonials" />
+          <div className="w-16 h-1 bg-red-700"></div>
+        </div>
+        <div className="relative pb-10">
           <Swiper
             spaceBetween={30}
             centeredSlides={false}
@@ -54,23 +63,15 @@ const CardGrid = () => {
                 slidesPerView: 1,
                 spaceBetween: 20,
               },
-              768: {
-                slidesPerView: 2,
-                spaceBetween: 25,
-              },
               1024: {
-                slidesPerView: 3,
-                spaceBetween: 30,
-              },
-              1280: {
-                slidesPerView: 4,
+                slidesPerView: 2,
                 spaceBetween: 30,
               },
             }}
           >
-            {cardData.map((card, index) => (
+            {basisData.map((item, index) => (
               <SwiperSlide key={index}>
-                <AnimatedCard card={card} />
+                <TestimonialsCard item={item} />
               </SwiperSlide>
             ))}
           </Swiper>
@@ -92,10 +93,10 @@ const CardGrid = () => {
           >
             <LeftArrow />
           </div>
-        </section>
+        </div>
       </div>
     </section>
   );
 };
 
-export default CardGrid;
+export default Testimonials;

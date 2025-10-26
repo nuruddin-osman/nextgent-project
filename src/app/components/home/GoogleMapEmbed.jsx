@@ -75,7 +75,7 @@ const GoogleMapEmbed = () => {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "tween", duration: 0.5 }}
-              className="hidden md:block absolute right-0 top-0 w-[400px] h-full bg-white shadow-2xl z-50 flex flex-col items-center justify-center p-6"
+              className="hidden  absolute right-0 top-0 w-[400px] h-full bg-white shadow-2xl z-50 md:flex flex-col items-center justify-center p-6"
             >
               <button
                 className="absolute top-4 right-4 text-gray-600 hover:text-black"

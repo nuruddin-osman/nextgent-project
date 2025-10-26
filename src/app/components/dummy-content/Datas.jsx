@@ -97,3 +97,53 @@ export const cardData = [
     ],
   },
 ];
+export const basisData = [
+  {
+    id: 1,
+    image: project_slide_1,
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo, ad. Nemo eum dicta saepe quae voluptate ipsa sit at delectus, nostrum libero error inventore. Nisi minima et fugit veniam sed!",
+  },
+  {
+    id: 1,
+    image: project_slide_2,
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo, ad. Nemo eum dicta saepe quae voluptate ipsa sit at delectus, nostrum libero error inventore. Nisi minima et fugit veniam sed!",
+  },
+  {
+    id: 1,
+    image: project_slide_3,
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo, ad. Nemo eum dicta saepe quae voluptate ipsa sit at delectus, nostrum libero error inventore. Nisi minima et fugit veniam sed!",
+  },
+  {
+    id: 1,
+    image: project_slide_4,
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo, ad. Nemo eum dicta saepe quae voluptate ipsa sit at delectus, nostrum libero error inventore. Nisi minima et fugit veniam sed!",
+  },
+  {
+    id: 1,
+    image: project_slide_5,
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo, ad. Nemo eum dicta saepe quae voluptate ipsa sit at delectus, nostrum libero error inventore. Nisi minima et fugit veniam sed!",
+  },
+  {
+    id: 1,
+    image: project_slide_1,
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo, ad. Nemo eum dicta saepe quae voluptate ipsa sit at delectus, nostrum libero error inventore. Nisi minima et fugit veniam sed!",
+  },
+  {
+    id: 1,
+    image: project_slide_2,
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo, ad. Nemo eum dicta saepe quae voluptate ipsa sit at delectus, nostrum libero error inventore. Nisi minima et fugit veniam sed!",
+  },
+  {
+    id: 1,
+    image: project_slide_1,
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo, ad. Nemo eum dicta saepe quae voluptate ipsa sit at delectus, nostrum libero error inventore. Nisi minima et fugit veniam sed!",
+  },
+];
