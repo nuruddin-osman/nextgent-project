@@ -19,8 +19,8 @@ const OurAscendance = () => {
   }, []);
 
   return (
-    <section>
-      <div className="container mx-auto py-32 px-3">
+    <section className="py-32 bg-[#F2F2F2]">
+      <div className="container mx-auto px-3">
         <div
           className="flex flex-col items-center justify-center gap-3"
           data-aos="fade-up"

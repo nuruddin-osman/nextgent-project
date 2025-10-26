@@ -19,7 +19,7 @@ const Awards = () => {
 
   return (
     <section className="bg-[#F2F2F2] py-32">
-      <div className="container mx-auto">
+      <div className="container mx-auto px-3">
         <div
           className="flex flex-col items-center justify-center gap-3"
           data-aos="fade-up"
@@ -38,7 +38,7 @@ const Awards = () => {
           {companiesLogo.map((item) => (
             <div
               key={item.id}
-              className="px-10 py-2 w-full h-[40vh] bg-white shadow-md rounded-sm"
+              className="px-2 lg:px-10 py-2 w-full h-[20vh] lg:h-[40vh] bg-white shadow-md rounded-sm"
             >
               <div className="relative w-full h-full overflow-hidden flex items-center justify-center">
                 <Image

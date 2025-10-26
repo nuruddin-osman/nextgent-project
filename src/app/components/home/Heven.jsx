@@ -11,7 +11,7 @@ const Heven = () => {
       }}
     >
       <div className="container mx-auto">
-        <div className="flex flex-col items-center">
+        <div className="flex flex-col items-center justify-center">
           <h4 className="text-sm lg:text-lg font-medium uppercase text-white font-montserrat">
             A LITTLE PIECE OF
           </h4>
