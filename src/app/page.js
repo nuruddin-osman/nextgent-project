@@ -7,6 +7,7 @@ import Heven from "./components/home/Heven";
 import GoogleMapEmbed from "./components/home/GoogleMapEmbed";
 import Dummy from "./components/Dummy";
 import Testimonials from "./components/home/Testimonials";
+import Awards from "./components/home/Awards";
 const Home = () => {
   return (
     <div>
@@ -17,6 +18,7 @@ const Home = () => {
       <Heven />
       <GoogleMapEmbed />
       <Testimonials />
+      <Awards />
       {/* <Dummy /> */}
     </div>
   );
