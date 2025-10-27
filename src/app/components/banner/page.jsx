@@ -3,7 +3,7 @@
 import React, { useState, useRef, useMemo } from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
-import ImageUploads from "../components/ImageUploads";
+import ImageUploads from "../ImageUploads";
 
 const BannerAdmin = ({ placeholder }) => {
   const [imageUrl, setImageUrl] = useState("");

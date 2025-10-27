@@ -3,7 +3,7 @@
 import React, { useState, useRef, useMemo } from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
-import ImageUploads from "@/app/components/components/ImageUploads";
+import ImageUploads from "@/app/components/ImageUploads";
 
 const ProjectItemSection = ({ placeholder }) => {
   const [imageUrl, setImageUrl] = useState("");
@@ -19,6 +19,7 @@ const ProjectItemSection = ({ placeholder }) => {
   const {
     register,
     handleSubmit,
+    reset,
     watch,
     formState: { errors },
   } = useForm();
@@ -38,6 +39,9 @@ const ProjectItemSection = ({ placeholder }) => {
         console.log(response.data);
         alert("Item created successfully!");
         console.log("success");
+
+        reset();
+        setImageUrl("");
       }
     } catch (error) {
       console.log(error);
@@ -80,7 +84,7 @@ const ProjectItemSection = ({ placeholder }) => {
         <div className="w-full bg-white shadow-xl overflow-hidden">
           {/* Header */}
           <div className="bg-gradient-to-r from-primary to-accent p-4  flex justify-between items-center">
-            <h2 className="text-base md:text-xl font-semibold text-white font-open-sans">
+            <h2 className="text-base md:text-xl font-semibold text-white font-montserrat">
               Projects
             </h2>
           </div>
@@ -91,7 +95,7 @@ const ProjectItemSection = ({ placeholder }) => {
               <div className="space-y-2 w-full md:w-1/2">
                 <label
                   htmlFor="title"
-                  className="block text-sm font-medium text-gray-700 font-open-sans"
+                  className="block text-sm font-medium text-gray-700 font-montserrat"
                 >
                   title
                 </label>
@@ -121,7 +125,7 @@ const ProjectItemSection = ({ placeholder }) => {
               <div className="space-y-2 w-full md:w-1/2">
                 <label
                   htmlFor="subtitle"
-                  className="block text-sm font-medium text-gray-700 font-open-sans"
+                  className="block text-sm font-medium text-gray-700 font-montserrat"
                 >
                   subtitle
                 </label>
@@ -153,9 +157,9 @@ const ProjectItemSection = ({ placeholder }) => {
               <div className="space-y-2 w-full md:w-1/2">
                 <label
                   htmlFor="list"
-                  className="block text-sm font-medium text-gray-700 font-open-sans"
+                  className="block text-sm font-medium text-gray-700 font-montserrat"
                 >
-                  List
+                  List (Items separate with ","(comma))
                 </label>
                 <div className="relative">
                   <input
@@ -175,7 +179,7 @@ const ProjectItemSection = ({ placeholder }) => {
               <div className="space-y-2 w-full md:w-1/2">
                 <label
                   htmlFor="area"
-                  className="block text-sm font-medium text-gray-700 font-open-sans"
+                  className="block text-sm font-medium text-gray-700 font-montserrat"
                 >
                   Area
                 </label>
