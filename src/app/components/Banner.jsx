@@ -5,11 +5,6 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import BannerIgm_1 from "../assets/images/banner_1.webp";
-import BannerIgm_2 from "../assets/images/banner_2.jpg";
-import BannerIgm_3 from "../assets/images/banner_3.webp";
-import BannerIgm_4 from "../assets/images/banner_3.webp";
-import BannerIgm_5 from "../assets/images/banner_3.webp";
 import Image from "next/image";
 
 // Import Swiper styles
@@ -18,54 +13,27 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { RightArrow } from "./icons/RightArrow";
 import { LeftArrow } from "./icons/LeftArrow";
+import axios from "axios";
+import { toast } from "react-toastify";
 
 const BannerSlider = () => {
   const swiperRef = useRef(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const [isMounted, setIsMounted] = useState(false);
+  const [bannerData, setBannerData] = useState([]);
 
-  const heroSlides = [
-    {
-      id: 1,
-      title: "destination",
-      subtitle: "iconic",
-      desc: "for business excellence",
-      image: BannerIgm_1,
-      overlay: "bg-black/20",
-    },
-    {
-      id: 2,
-      title: "destination",
-      subtitle: "iconic",
-      desc: "for business excellence",
-      image: BannerIgm_2,
-      overlay: "bg-black/20",
-    },
-    {
-      id: 3,
-      title: "destination",
-      subtitle: "iconic",
-      desc: "for business excellence",
-      image: BannerIgm_3,
-      overlay: "bg-black/20",
-    },
-    {
-      id: 4,
-      title: "destination",
-      subtitle: "iconic",
-      desc: "for business excellence",
-      image: BannerIgm_4,
-      overlay: "bg-black/20",
-    },
-    {
-      id: 5,
-      title: "destination",
-      subtitle: "iconic",
-      desc: "for business excellence",
-      image: BannerIgm_5,
-      overlay: "bg-black/20",
-    },
-  ];
+  const getBannerData = async () => {
+    try {
+      const response = await axios.get(`http://localhost:4000/api/banner`);
+      if (response.data) {
+        setBannerData(response.data?.data);
+        console.log("Banner data get success");
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error("Banner data is not found");
+    }
+  };
 
   useEffect(() => {
     setIsMounted(true);
@@ -75,6 +43,7 @@ const BannerSlider = () => {
       once: false,
       mirror: true,
     });
+    getBannerData();
   }, []);
 
   const handleSlideChange = (swiper) => {
@@ -115,10 +84,10 @@ const BannerSlider = () => {
           modules={[Autoplay, Pagination, Navigation]}
           className="h-full w-full"
         >
-          {heroSlides.map((slide, index) => (
-            <SwiperSlide key={slide.id} className="relative h-full">
+          {bannerData?.map((slide, index) => (
+            <SwiperSlide key={slide._id} className="relative h-full">
               <div className="relative h-full w-full overflow-hidden">
-                <div className={`absolute inset-0 ${slide.overlay} z-10`}></div>
+                <div className={`absolute inset-0 bg-black/20 z-10`}></div>
 
                 {/* Animated Image */}
                 <div
@@ -128,13 +97,16 @@ const BannerSlider = () => {
                       : "opacity-100 brightness-50"
                   } transition-all duration-[1500ms] ease-[cubic-bezier(0.7,0,0.3,1)]`}
                 >
-                  <Image
-                    fill
-                    src={slide.image.src}
-                    alt={slide.title}
-                    className="object-cover"
-                    priority={index === 0}
-                  />
+                  {slide?.image?.[0]?.url && (
+                    <Image
+                      fill
+                      src={`http://localhost:4000${slide.image[0].url}`}
+                      alt={slide.image[0].alt}
+                      className="object-cover"
+                      priority={index === 0}
+                      unoptimized={true}
+                    />
+                  )}
 
                   <div className="absolute bottom-10 left-10 md:left-24 z-10">
                     <h4 className="text-sm lg:text-lg font-medium uppercase text-white font-montserrat">

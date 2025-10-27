@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { useState } from "react";
 
-const AnimatedCard = ({ card }) => {
+const AnimatedCard = ({ card, index }) => {
   const [isHovered, setIsHovered] = useState(false);
 
   // Animation variants
@@ -44,13 +44,18 @@ const AnimatedCard = ({ card }) => {
       >
         {/* Background Image */}
         <motion.div className="absolute inset-0" variants={imageVariants}>
-          <Image
-            src={card.image.src}
-            alt={card.title}
-            fill
-            className="object-cover"
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          />
+          {card?.image?.[0]?.url && (
+            <Image
+              fill
+              src={`http://localhost:4000${card.image[0].url}`}
+              alt={card.image[0].alt}
+              className="object-cover"
+              priority={index === 0}
+              unoptimized={true}
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            />
+          )}
+
           {/* Black Overlay on Hover */}
           <motion.div
             className="absolute inset-0 bg-black"
@@ -62,9 +67,9 @@ const AnimatedCard = ({ card }) => {
 
         <div className="w-full h-full absolute bottom-0 translate-y-full group-hover:translate-y-0 transition-all duration-[1.5s] p-6">
           {/* Features List */}
-          {card.features.length > 0 && (
+          {card?.list?.length > 0 && (
             <ul className="space-y-2">
-              {card.features.map((item, index) => (
+              {card.list[0].split(",").map((item, index) => (
                 <li
                   key={index}
                   className="text-sm font-normal capitalize text-white font-montserrat flex items-center gap-3"
@@ -84,7 +89,7 @@ const AnimatedCard = ({ card }) => {
       </motion.div>
       <div className="mt-4">
         <span className="text-sm font-normal capitalize  font-montserrat ">
-          {card.subTitle}
+          {card.subtitle}
         </span>
         <h6 className="text-xl font-normal capitalize  font-montserrat ">
           {card.title}

@@ -10,16 +10,32 @@ import AnimatedCard from "../AnimatedCard";
 import { LeftArrow } from "../icons/LeftArrow";
 import { RightArrow } from "../icons/RightArrow";
 import { useEffect, useState } from "react";
-import { cardData } from "../dummy-content/Datas";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import axios from "axios";
+import { toast } from "react-toastify";
 
 const CardGrid = () => {
   const [isMounted, setIsMounted] = useState(false);
+  const [projectData, setProjectData] = useState([]);
+
+  const getProjectData = async () => {
+    try {
+      const response = await axios.get(`http://localhost:4000/api/project`);
+      if (response.data) {
+        setProjectData(response.data?.data);
+        console.log("Project data get success");
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error("Project data is not found");
+    }
+  };
 
   useEffect(() => {
     setIsMounted(true);
     AOS.init({ duration: 1000, once: true });
+    getProjectData();
   }, []);
 
   if (!isMounted) {
@@ -68,9 +84,9 @@ const CardGrid = () => {
               },
             }}
           >
-            {cardData.map((card, index) => (
-              <SwiperSlide key={index}>
-                <AnimatedCard card={card} />
+            {projectData?.map((card, index) => (
+              <SwiperSlide key={card._id}>
+                <AnimatedCard card={card} index={index} />
               </SwiperSlide>
             ))}
           </Swiper>

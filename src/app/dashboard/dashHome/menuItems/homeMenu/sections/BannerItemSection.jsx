@@ -4,6 +4,7 @@ import React, { useState, useRef, useMemo } from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import ImageUploads from "@/app/components/ImageUploads";
+import { toast } from "react-toastify";
 
 const BannerItemSection = ({ placeholder }) => {
   const [imageUrl, setImageUrl] = useState("");
@@ -37,13 +38,14 @@ const BannerItemSection = ({ placeholder }) => {
       );
       if (response.data) {
         console.log(response.data);
-        alert("Item created successfully!");
+        toast.success("Item created successfully!");
         console.log("success");
 
         reset();
         setImageUrl("");
       }
     } catch (error) {
+      toast.error("Item is not created");
       console.log(error);
     }
   };
@@ -68,13 +70,13 @@ const BannerItemSection = ({ placeholder }) => {
       if (response.data) {
         console.log(response.data.imageUrl);
         setImageUrl(response.data.imageUrl);
-        alert("Image uploaded successfully!");
+        toast.success("Image uploaded successfully!");
       } else {
-        alert("Image upload failed");
+        toast.error("Image is not uploads");
       }
     } catch (error) {
       console.error("Image upload error:", error);
-      alert("Image upload error");
+      toast.error("Image not uploads for server error");
     }
   };
 

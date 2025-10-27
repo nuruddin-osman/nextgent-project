@@ -14,13 +14,31 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import SubHeading from "@/app/utils/SubHeading";
 import TestimonialsCard from "../TestimonialsCard";
+import axios from "axios";
+import { toast } from "react-toastify";
 
 const Testimonials = () => {
   const [isMounted, setIsMounted] = useState(false);
+  const [testi, setTesti] = useState([]);
+  console.log(testi);
+
+  const getTestiData = async () => {
+    try {
+      const response = await axios.get(`http://localhost:4000/api/testimonial`);
+      if (response.data) {
+        setTesti(response.data?.data);
+        console.log("Project data get success");
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error("Project data is not found");
+    }
+  };
 
   useEffect(() => {
     setIsMounted(true);
     AOS.init({ duration: 1000, once: true });
+    getTestiData();
   }, []);
 
   if (!isMounted) {
@@ -69,9 +87,9 @@ const Testimonials = () => {
               },
             }}
           >
-            {basisData.map((item, index) => (
-              <SwiperSlide key={index}>
-                <TestimonialsCard item={item} />
+            {testi?.map((item, index) => (
+              <SwiperSlide key={item._id}>
+                <TestimonialsCard item={item} index={index} />
               </SwiperSlide>
             ))}
           </Swiper>
