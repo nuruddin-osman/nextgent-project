@@ -2,7 +2,7 @@
 
 import { menuItems } from "@/app/components/dummy-content/Datas";
 import React, { useState } from "react";
-import HomeMenu from "./menuItems/HomeMenu";
+import HomeMenu from "./menuItems/homeMenu/Index";
 import AboutMenu from "./menuItems/AboutMenu";
 import PropertiesMenu from "./menuItems/PropertiesMenu";
 import ConcernsMenu from "./menuItems/ConcernsMenu";

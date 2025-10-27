@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import axios from "axios";
 import ImageUploads from "@/app/components/components/ImageUploads";
 
-const HomeMenu = ({ placeholder }) => {
+const ProjectItemSection = ({ placeholder }) => {
   const [imageUrl, setImageUrl] = useState("");
 
   const config = useMemo(
@@ -31,11 +31,12 @@ const HomeMenu = ({ placeholder }) => {
       };
 
       const response = await axios.post(
-        `http://localhost:4000/api/banner`,
+        `http://localhost:4000/api/project`,
         allData
       );
       if (response.data) {
         console.log(response.data);
+        alert("Item created successfully!");
         console.log("success");
       }
     } catch (error) {
@@ -51,7 +52,7 @@ const HomeMenu = ({ placeholder }) => {
       formData.append("image", file);
 
       const response = await axios.post(
-        `http://localhost:4000/api/banner/upload`,
+        `http://localhost:4000/api/upload`,
         formData,
         {
           headers: {
@@ -75,18 +76,17 @@ const HomeMenu = ({ placeholder }) => {
 
   return (
     <>
-      <div className="min-h-screen flex items-center justify-center p-4 font-inter">
-        <div className="max-w-4xl w-full bg-white rounded-2xl shadow-xl overflow-hidden">
+      <div className="">
+        <div className="w-full bg-white shadow-xl overflow-hidden">
           {/* Header */}
-          <div className="bg-gradient-to-r from-[#FAB12F] to-[#8C1007] p-6  flex justify-between items-center">
+          <div className="bg-gradient-to-r from-primary to-accent p-4  flex justify-between items-center">
             <h2 className="text-base md:text-xl font-semibold text-white font-open-sans">
-              New Account Create
+              Projects
             </h2>
           </div>
 
           {/* Registration Form */}
-          <form onSubmit={handleSubmit(onSubmit)} className="p-6 space-y-4">
-            {/* Full Name */}
+          <form onSubmit={handleSubmit(onSubmit)} className="p-4 space-y-2">
             <div className="flex flex-col md:flex-row gap-5">
               <div className="space-y-2 w-full md:w-1/2">
                 <label
@@ -103,7 +103,7 @@ const HomeMenu = ({ placeholder }) => {
                     type="text"
                     id="title"
                     name="title"
-                    className={`block w-full pl-10 pr-3 py-3 border rounded-lg focus:outline-none focus:ring-2 transition-colors form-control ${
+                    className={`block w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-1 transition-colors form-control ${
                       errors.title
                         ? "border-red-300 focus:ring-red-500 focus:border-red-500"
                         : "border-gray-300 focus:ring-blue-500 focus:border-blue-500"
@@ -118,7 +118,6 @@ const HomeMenu = ({ placeholder }) => {
                 )}
               </div>
 
-              {/* Phone Number */}
               <div className="space-y-2 w-full md:w-1/2">
                 <label
                   htmlFor="subtitle"
@@ -134,7 +133,7 @@ const HomeMenu = ({ placeholder }) => {
                     type="text"
                     id="subtitle"
                     name="subtitle"
-                    className={`block w-full pl-10 pr-3 py-3 border rounded-lg focus:outline-none focus:ring-2 transition-colors form-control ${
+                    className={`block w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-1 transition-colors form-control ${
                       errors.subtitle
                         ? "border-red-300 focus:ring-red-500 focus:border-red-500"
                         : "border-gray-300 focus:ring-blue-500 focus:border-blue-500"
@@ -150,26 +149,50 @@ const HomeMenu = ({ placeholder }) => {
               </div>
             </div>
 
-            <div className="space-y-2  w-full">
-              <label
-                htmlFor="desc"
-                className="block text-sm font-medium text-gray-700 font-open-sans"
-              >
-                description
-              </label>
-              <div className="relative">
-                <textarea
-                  {...register("desc")}
-                  type="text"
-                  id="desc"
-                  name="desc"
-                  className={`block w-full pl-10 pr-3 py-3 border rounded-lg focus:outline-none focus:ring-2 transition-colors  ${
-                    errors.desc
-                      ? "border-red-300 focus:ring-red-500 focus:border-red-500"
-                      : "border-gray-300 focus:ring-blue-500 focus:border-blue-500"
-                  }`}
-                  placeholder="description here"
-                />
+            <div className="flex flex-col md:flex-row gap-5">
+              <div className="space-y-2 w-full md:w-1/2">
+                <label
+                  htmlFor="list"
+                  className="block text-sm font-medium text-gray-700 font-open-sans"
+                >
+                  List
+                </label>
+                <div className="relative">
+                  <input
+                    {...register("list")}
+                    type="text"
+                    id="list"
+                    name="list"
+                    className={`block w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-1 transition-colors form-control ${
+                      errors.list
+                        ? "border-red-300 focus:ring-red-500 focus:border-red-500"
+                        : "border-gray-300 focus:ring-blue-500 focus:border-blue-500"
+                    }`}
+                    placeholder="list"
+                  />
+                </div>
+              </div>
+              <div className="space-y-2 w-full md:w-1/2">
+                <label
+                  htmlFor="area"
+                  className="block text-sm font-medium text-gray-700 font-open-sans"
+                >
+                  Area
+                </label>
+                <div className="relative">
+                  <textarea
+                    {...register("area")}
+                    type="text"
+                    id="area"
+                    name="area"
+                    className={`block w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-1 transition-colors  ${
+                      errors.area
+                        ? "border-red-300 focus:ring-red-500 focus:border-red-500"
+                        : "border-gray-300 focus:ring-blue-500 focus:border-blue-500"
+                    }`}
+                    placeholder="area here"
+                  />
+                </div>
               </div>
             </div>
             <div className="">
@@ -183,9 +206,9 @@ const HomeMenu = ({ placeholder }) => {
             <div className="flex justify-end items-center">
               <button
                 type="submit"
-                className="w-fit cursor-pointer bg-gradient-to-r from-[#FAB12F] to-[#8C1007] text-white py-3 px-4 rounded-lg font-semibold hover:from-[#FAB12F]/70 hover:to-[#8C1007]/70 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors"
+                className="w-fit cursor-pointer bg-gradient-to-r from-[#FAB12F] to-[#8C1007] text-white py-3 px-4 rounded-lg font-semibold hover:from-[#FAB12F]/70 hover:to-[#8C1007]/70 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:ring-offset-2 transition-colors"
               >
-                submit
+                Save
               </button>
             </div>
           </form>
@@ -195,4 +218,4 @@ const HomeMenu = ({ placeholder }) => {
   );
 };
 
-export default HomeMenu;
+export default ProjectItemSection;
