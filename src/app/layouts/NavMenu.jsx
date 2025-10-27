@@ -6,26 +6,9 @@ import { IoCloseOutline } from "react-icons/io5";
 import ImageGallary from "./ImageGallary";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { menuItems } from "../components/dummy-content/Datas";
 
 const NavMenu = ({ handleClose }) => {
-  const menuItems = {
-    action_menu: [
-      "Home",
-      "About",
-      "Management Team",
-      "Properties",
-      "Concerns",
-      "Landowner",
-      "Buyer",
-      "Blogs",
-      "News & Events",
-      "Gallery",
-      "Contact",
-      "CSR",
-    ],
-    blog_menu: ["Residential", "Commercial"],
-  };
-
   useEffect(() => {
     AOS.init({ duration: 1000, once: true });
   }, []);

@@ -10,7 +10,6 @@ const ImageUploads = ({ handleImageUpload, imageUrl }) => {
       <label className="block text-sm font-semibold text-gray-700 mb-2">
         Image
       </label>
-
       <div className="flex flex-col sm:flex-row items-center justify-between gap-4 w-full">
         {/* Upload image */}
         <label className="flex flex-col items-center justify-center w-full sm:w-1/2 h-40 border-2 border-dashed border-gray-300 rounded-xl cursor-pointer bg-gradient-to-br from-gray-50 to-gray-100 hover:from-gray-100 hover:to-gray-200 transition-all duration-300 shadow-sm hover:shadow-md">

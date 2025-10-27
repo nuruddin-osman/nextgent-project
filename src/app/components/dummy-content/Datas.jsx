@@ -155,3 +155,21 @@ export const companiesLogo = [
   { id: 2, image: Award_2 },
   { id: 3, image: Award_3 },
 ];
+
+export const menuItems = {
+  action_menu: [
+    "Home",
+    "About",
+    "Properties",
+    "Concerns",
+    "Landowner",
+    "Buyer",
+    "Blogs",
+    "Management Team",
+    "News & Events",
+    "Gallery",
+    "Contact",
+    "CSR",
+  ],
+  blog_menu: ["Residential", "Commercial"],
+};
