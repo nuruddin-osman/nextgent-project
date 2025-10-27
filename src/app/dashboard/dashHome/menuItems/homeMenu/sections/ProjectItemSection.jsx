@@ -8,6 +8,7 @@ import { toast } from "react-toastify";
 
 const ProjectItemSection = ({ placeholder }) => {
   const [imageUrl, setImageUrl] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const BASE_URL = process.env.NEXT_PUBLIC_API_URL;
 
@@ -33,7 +34,7 @@ const ProjectItemSection = ({ placeholder }) => {
         ...data,
         image: imageUrl ? [{ url: imageUrl, alt: data.title }] : [],
       };
-
+      setLoading(true);
       const response = await axios.post(`${BASE_URL}/api/project`, allData);
       if (response.data) {
         console.log(response.data);
@@ -46,6 +47,8 @@ const ProjectItemSection = ({ placeholder }) => {
     } catch (error) {
       console.log(error);
       toast.error("Item is not created");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -56,6 +59,7 @@ const ProjectItemSection = ({ placeholder }) => {
       const file = e.target.files[0];
       formData.append("image", file);
 
+      setLoading(true);
       const response = await axios.post(`${BASE_URL}/api/upload`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
@@ -72,6 +76,8 @@ const ProjectItemSection = ({ placeholder }) => {
     } catch (error) {
       console.error("Image upload error:", error);
       toast.error("Image not uploads for server error");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -205,12 +211,18 @@ const ProjectItemSection = ({ placeholder }) => {
 
             {/* Submit Button */}
             <div className="flex justify-end items-center">
-              <button
-                type="submit"
-                className="w-fit cursor-pointer bg-gradient-to-r from-[#FAB12F] to-[#8C1007] text-white py-3 px-4 rounded-lg font-semibold hover:from-[#FAB12F]/70 hover:to-[#8C1007]/70 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:ring-offset-2 transition-colors"
-              >
-                Save
-              </button>
+              {loading ? (
+                <button className="w-fit cursor-not-allowed bg-gradient-to-r from-[#FAB12F] to-[#8C1007] py-3 px-4 rounded-lg">
+                  <div className="w-6 h-6 border-4 border-t-transparent border-white rounded-full animate-spin"></div>
+                </button>
+              ) : (
+                <button
+                  type="submit"
+                  className="w-fit cursor-pointer bg-gradient-to-r from-[#FAB12F] to-[#8C1007] text-white py-3 px-4 rounded-lg font-semibold hover:from-[#FAB12F]/70 hover:to-[#8C1007]/70 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:ring-offset-2 transition-colors"
+                >
+                  Save
+                </button>
+              )}
             </div>
           </form>
         </div>

@@ -14,15 +14,18 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import axios from "axios";
 import { toast } from "react-toastify";
+import Loading from "../Loading";
 
 const CardGrid = () => {
   const [isMounted, setIsMounted] = useState(false);
   const [projectData, setProjectData] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const BASE_URL = process.env.NEXT_PUBLIC_API_URL;
 
   const getProjectData = async () => {
     try {
+      setLoading(true);
       const response = await axios.get(`${BASE_URL}/api/project`);
       if (response.data) {
         setProjectData(response.data?.data);
@@ -31,6 +34,8 @@ const CardGrid = () => {
     } catch (error) {
       console.log(error);
       toast.error("Project data is not found");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -46,6 +51,10 @@ const CardGrid = () => {
         <div className="text-xl">Loading...</div>
       </div>
     );
+  }
+
+  if (loading) {
+    return <Loading />;
   }
 
   return (

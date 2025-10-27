@@ -4,7 +4,7 @@ import React from "react";
 import { FaPlus } from "react-icons/fa";
 import Image from "next/image";
 
-const ImageUploads = ({ handleImageUpload, imageUrl }) => {
+const ImageUploads = ({ handleImageUpload, imageUrl, loading }) => {
   const BASE_URL = process.env.NEXT_PUBLIC_API_URL;
   return (
     <div className="w-full">
@@ -32,21 +32,27 @@ const ImageUploads = ({ handleImageUpload, imageUrl }) => {
         </label>
 
         {/* Preview Box */}
-        {imageUrl && (
-          <div className="flex flex-col items-center justify-center w-full sm:w-1/2 h-40 bg-white border border-gray-200 rounded-xl px-20 py-2 shadow-sm">
-            <div className="relative w-full h-full">
-              <Image
-                src={`${BASE_URL}${imageUrl}`}
-                alt="Preview"
-                className="object-cover rounded-lg border border-gray-300"
-                fill
-                unoptimized={true}
-              />
-            </div>
-            <span className="text-green-600 text-xs font-medium mt-2">
-              Image Uploaded Successfully!
-            </span>
+        {loading ? (
+          <div className="flex items-center justify-center bg-secondary/60">
+            <div className="w-20 h-20 border-4 border-t-transparent border-white rounded-full animate-spin"></div>
           </div>
+        ) : (
+          imageUrl && (
+            <div className="flex flex-col items-center justify-center w-full sm:w-1/2 h-40 bg-white border border-gray-200 rounded-xl px-20 py-2 shadow-sm">
+              <div className="relative w-full h-full">
+                <Image
+                  src={`${BASE_URL}${imageUrl}`}
+                  alt="Preview"
+                  className="object-cover rounded-lg border border-gray-300"
+                  fill
+                  unoptimized={true}
+                />
+              </div>
+              <span className="text-green-600 text-xs font-medium mt-2">
+                Image Uploaded Successfully!
+              </span>
+            </div>
+          )
         )}
       </div>
     </div>

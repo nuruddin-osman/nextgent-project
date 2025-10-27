@@ -15,6 +15,7 @@ import { RightArrow } from "./icons/RightArrow";
 import { LeftArrow } from "./icons/LeftArrow";
 import axios from "axios";
 import { toast } from "react-toastify";
+import Loading from "./Loading";
 
 const BannerSlider = () => {
   const swiperRef = useRef(null);
@@ -66,17 +67,7 @@ const BannerSlider = () => {
   }
 
   if (loading) {
-    return (
-      <div className="h-screen bg-black flex items-center justify-center">
-        <div className="w-16 h-16 border-4 border-t-transparent border-white rounded-full animate-spin"></div>
-        <p className="text-white font-montserrat text-3xl">
-          Please wait... It may take 5-10 minutes to load the data.
-        </p>
-        <p className="text-xs text-whitefont-montserrat">
-          Because I use free hosting at Render.com.
-        </p>
-      </div>
-    );
+    return <Loading />;
   }
 
   return (

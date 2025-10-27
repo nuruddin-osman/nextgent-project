@@ -9,22 +9,24 @@ import "swiper/css/navigation";
 import { LeftArrow } from "../icons/LeftArrow";
 import { RightArrow } from "../icons/RightArrow";
 import { useEffect, useState } from "react";
-import { basisData } from "../dummy-content/Datas";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import SubHeading from "@/app/utils/SubHeading";
 import TestimonialsCard from "../TestimonialsCard";
 import axios from "axios";
 import { toast } from "react-toastify";
+import Loading from "../Loading";
 
 const Testimonials = () => {
   const [isMounted, setIsMounted] = useState(false);
   const [testi, setTesti] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const BASE_URL = process.env.NEXT_PUBLIC_API_URL;
 
   const getTestiData = async () => {
     try {
+      setLoading(true);
       const response = await axios.get(`${BASE_URL}/api/testimonial`);
       if (response.data) {
         setTesti(response.data?.data);
@@ -33,6 +35,8 @@ const Testimonials = () => {
     } catch (error) {
       console.log(error);
       toast.error("Project data is not found");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -48,6 +52,10 @@ const Testimonials = () => {
         <div className="text-xl">Loading...</div>
       </div>
     );
+  }
+
+  if (loading) {
+    return <Loading />;
   }
 
   return (
