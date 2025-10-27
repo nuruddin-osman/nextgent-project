@@ -9,6 +9,8 @@ import { toast } from "react-toastify";
 const ProjectItemSection = ({ placeholder }) => {
   const [imageUrl, setImageUrl] = useState("");
 
+  const BASE_URL = process.env.NEXT_PUBLIC_API_URL;
+
   const config = useMemo(
     () => ({
       readonly: false,
@@ -32,10 +34,7 @@ const ProjectItemSection = ({ placeholder }) => {
         image: imageUrl ? [{ url: imageUrl, alt: data.title }] : [],
       };
 
-      const response = await axios.post(
-        `http://localhost:4000/api/project`,
-        allData
-      );
+      const response = await axios.post(`${BASE_URL}/api/project`, allData);
       if (response.data) {
         console.log(response.data);
         toast.success("Item created successfully!");
@@ -57,15 +56,11 @@ const ProjectItemSection = ({ placeholder }) => {
       const file = e.target.files[0];
       formData.append("image", file);
 
-      const response = await axios.post(
-        `http://localhost:4000/api/upload`,
-        formData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
+      const response = await axios.post(`${BASE_URL}/api/upload`, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
 
       if (response.data) {
         console.log(response.data.imageUrl);

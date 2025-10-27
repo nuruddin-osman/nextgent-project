@@ -20,11 +20,12 @@ import { toast } from "react-toastify";
 const Testimonials = () => {
   const [isMounted, setIsMounted] = useState(false);
   const [testi, setTesti] = useState([]);
-  console.log(testi);
+
+  const BASE_URL = process.env.NEXT_PUBLIC_API_URL;
 
   const getTestiData = async () => {
     try {
-      const response = await axios.get(`http://localhost:4000/api/testimonial`);
+      const response = await axios.get(`${BASE_URL}/api/testimonial`);
       if (response.data) {
         setTesti(response.data?.data);
         console.log("Project data get success");

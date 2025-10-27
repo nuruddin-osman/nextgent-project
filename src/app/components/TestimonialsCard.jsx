@@ -6,6 +6,7 @@ import "aos/dist/aos.css";
 import Image from "next/image";
 
 const TestimonialsCard = ({ item, index }) => {
+  const BASE_URL = process.env.NEXT_PUBLIC_API_URL;
   useEffect(() => {
     AOS.init({
       duration: 1000,
@@ -25,7 +26,7 @@ const TestimonialsCard = ({ item, index }) => {
           {item?.image?.[0]?.url && (
             <Image
               fill
-              src={`http://localhost:4000${item.image[0].url}`}
+              src={`${BASE_URL}${item.image[0].url}`}
               alt={item.image[0].alt}
               className="object-cover"
               priority={index === 0}

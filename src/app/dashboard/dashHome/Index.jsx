@@ -63,7 +63,7 @@ const DashHome = () => {
             </ul>
           </nav>
         </aside>
-        <main className="h-screen overflow-y-scroll scrollbar-thin scrollbar-thumb-secondary scrollbar-track-gray-200">
+        <main className="h-screen overflow-y-scroll scrollbar-thin scrollbar-thumb-secondary scrollbar-track-gray-200 ml-5">
           {renderItem()}
         </main>
       </div>

@@ -8,6 +8,8 @@ import { useState } from "react";
 const AnimatedCard = ({ card, index }) => {
   const [isHovered, setIsHovered] = useState(false);
 
+  const BASE_URL = process.env.NEXT_PUBLIC_API_URL;
+
   // Animation variants
   const cardVariants = {
     initial: {
@@ -47,7 +49,7 @@ const AnimatedCard = ({ card, index }) => {
           {card?.image?.[0]?.url && (
             <Image
               fill
-              src={`http://localhost:4000${card.image[0].url}`}
+              src={`${BASE_URL}${card.image[0].url}`}
               alt={card.image[0].alt}
               className="object-cover"
               priority={index === 0}

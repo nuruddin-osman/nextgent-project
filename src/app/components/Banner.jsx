@@ -22,9 +22,12 @@ const BannerSlider = () => {
   const [isMounted, setIsMounted] = useState(false);
   const [bannerData, setBannerData] = useState([]);
 
+  const BASE_URL = process.env.NEXT_PUBLIC_API_URL;
+  // const BASE_URL_TOW = `${process.env.NEXT_PUBLIC_API_URL}/api/dashboard/product`;
+
   const getBannerData = async () => {
     try {
-      const response = await axios.get(`http://localhost:4000/api/banner`);
+      const response = await axios.get(`${BASE_URL}/api/banner`);
       if (response.data) {
         setBannerData(response.data?.data);
         console.log("Banner data get success");
@@ -100,7 +103,7 @@ const BannerSlider = () => {
                   {slide?.image?.[0]?.url && (
                     <Image
                       fill
-                      src={`http://localhost:4000${slide.image[0].url}`}
+                      src={`${BASE_URL}${slide.image[0].url}`}
                       alt={slide.image[0].alt}
                       className="object-cover"
                       priority={index === 0}

@@ -19,9 +19,11 @@ const CardGrid = () => {
   const [isMounted, setIsMounted] = useState(false);
   const [projectData, setProjectData] = useState([]);
 
+  const BASE_URL = process.env.NEXT_PUBLIC_API_URL;
+
   const getProjectData = async () => {
     try {
-      const response = await axios.get(`http://localhost:4000/api/project`);
+      const response = await axios.get(`${BASE_URL}/api/project`);
       if (response.data) {
         setProjectData(response.data?.data);
         console.log("Project data get success");
