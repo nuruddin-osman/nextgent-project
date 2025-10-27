@@ -5,6 +5,7 @@ import { FaPlus } from "react-icons/fa";
 import Image from "next/image";
 
 const ImageUploads = ({ handleImageUpload, imageUrl }) => {
+  const BASE_URL = process.env.NEXT_PUBLIC_API_URL;
   return (
     <div className="w-full">
       <label className="block text-sm font-semibold text-gray-700 mb-2">
@@ -35,7 +36,7 @@ const ImageUploads = ({ handleImageUpload, imageUrl }) => {
           <div className="flex flex-col items-center justify-center w-full sm:w-1/2 h-40 bg-white border border-gray-200 rounded-xl px-20 py-2 shadow-sm">
             <div className="relative w-full h-full">
               <Image
-                src={`http://localhost:4000${imageUrl}`}
+                src={`${BASE_URL}${imageUrl}`}
                 alt="Preview"
                 className="object-cover rounded-lg border border-gray-300"
                 fill

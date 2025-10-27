@@ -21,12 +21,13 @@ const BannerSlider = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isMounted, setIsMounted] = useState(false);
   const [bannerData, setBannerData] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const BASE_URL = process.env.NEXT_PUBLIC_API_URL;
-  // const BASE_URL_TOW = `${process.env.NEXT_PUBLIC_API_URL}/api/dashboard/product`;
 
   const getBannerData = async () => {
     try {
+      setLoading(true);
       const response = await axios.get(`${BASE_URL}/api/banner`);
       if (response.data) {
         setBannerData(response.data?.data);
@@ -35,6 +36,8 @@ const BannerSlider = () => {
     } catch (error) {
       console.log(error);
       toast.error("Banner data is not found");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -59,6 +62,20 @@ const BannerSlider = () => {
   if (!isMounted) {
     return (
       <div className="h-screen bg-black flex items-center justify-center"></div>
+    );
+  }
+
+  if (loading) {
+    return (
+      <div className="h-screen bg-black flex items-center justify-center">
+        <div className="w-16 h-16 border-4 border-t-transparent border-white rounded-full animate-spin"></div>
+        <p className="text-white font-montserrat text-3xl">
+          Please wait... It may take 5-10 minutes to load the data.
+        </p>
+        <p className="text-xs text-whitefont-montserrat">
+          Because I use free hosting at Render.com.
+        </p>
+      </div>
     );
   }
 
