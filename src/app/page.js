@@ -8,6 +8,7 @@ import GoogleMapEmbed from "./components/home/GoogleMapEmbed";
 import Dummy from "./components/Dummy";
 import Testimonials from "./components/home/Testimonials";
 import Awards from "./components/home/Awards";
+
 const Home = () => {
   return (
     <div>
