@@ -7,7 +7,7 @@ const Loading = () => {
         <div className="flex gap-8 items-center flex-col md:flex-row px-10">
           <div className="w-12 h-12 border-4 border-t-transparent border-white rounded-full animate-spin"></div>
           <p className="text-white font-montserrat text-3xl">
-            Please wait... It may take 5-10 minutes to load the data.
+            Please wait... It may take up t 1-5 minutes to load the data.
           </p>
         </div>
         <p className="text-xs text-white font-montserrat ml-10 md:ml-20 mt-5">
